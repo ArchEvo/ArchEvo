@@ -25,4 +25,5 @@ if [[ "$(cat /etc/issue)" != *"Arch Linux"* ]]; then
 fi
 
 
-echo 'All initial tests were successfully completed'
+echo -e '\e[32mAll initial tests were successfully completed\e[39m'
+sleep 3
