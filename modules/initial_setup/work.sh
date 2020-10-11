@@ -41,7 +41,7 @@ mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 
 # install init system
-pacstrap /mnt base linux linux-firmware grub btrfs-progs efibootmgr lzop cryptsetup git amd-ucode intel-ucode
+pacstrap /mnt base linux linux-firmware grub btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim amd-ucode intel-ucode
 
 # create fstab
 genfstab -U /mnt >> /mnt/etc/fstab
