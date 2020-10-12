@@ -41,7 +41,7 @@ mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 
 # install init system
-pacstrap /mnt base linux linux-firmware grub btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim amd-ucode intel-ucode
+pacstrap /mnt base linux linux-firmware grub btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim amd-ucode intel-ucode reflector
 
 # create fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -52,6 +52,9 @@ echo LANG=de_DE.UTF-8 > /mnt/etc/locale.conf
 echo -e "en_US.UTF-8 UTF-8\nde_DE.UTF-8 UTF-8" > /mnt/etc/locale.gen
 echo KEYMAP=de-latin1 > /mnt/etc/vconsole.conf
 echo FONT=lat9w-16 >> /mnt/etc/vconsole.conf
+
+# reflector: get fastest arch linux archive server; https only
+arch-chroot /mnt/ reflector -c Germany -a 2 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
 ln -sf /mnt/usr/share/zoneinfo/Europe/Berlin /mnt/etc/localtime
 
@@ -112,8 +115,6 @@ echo "/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
 
 arch-chroot /mnt/ mkdir -p /opt/ArchEvo
 arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
-
-
 
 
 
