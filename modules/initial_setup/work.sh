@@ -22,7 +22,7 @@ mkfs.btrfs /dev/mapper/cryptroot
 mount /dev/mapper/cryptroot /mnt
 
 #create subvol
-btrfs sub create /mnt/@
+btrfs sub create /mnt/@root
 btrfs sub create /mnt/@home
 btrfs sub create /mnt/@snapshots
 
@@ -30,7 +30,7 @@ btrfs sub create /mnt/@snapshots
 umount /mnt
 
 #mount subvol
-mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@ /dev/mapper/cryptroot /mnt
+mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@root /dev/mapper/cryptroot /mnt
 mkdir -p /mnt/home
 mkdir -p /mnt/.snapshots
 mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@home /dev/mapper/cryptroot /mnt/home/
