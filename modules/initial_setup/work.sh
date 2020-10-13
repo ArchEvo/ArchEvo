@@ -24,6 +24,7 @@ mount /dev/mapper/cryptroot /mnt
 #create subvol
 btrfs sub create /mnt/@root
 btrfs sub create /mnt/@home
+btrfs sub create /mnt/@swap
 btrfs sub create /mnt/@snapshots
 
 #umount
@@ -31,9 +32,11 @@ umount /mnt
 
 #mount subvol
 mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@root /dev/mapper/cryptroot /mnt
-mkdir -p /mnt/home
-mkdir -p /mnt/.snapshots
+
+mkdir /mnt/{home,.snapshots,swap}
+
 mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@home /dev/mapper/cryptroot /mnt/home/
+mount -o ssd,noatime,subvol=@swap /dev/mapper/cryptroot /mnt/swap/
 mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
 
 #mount efi
@@ -103,15 +106,15 @@ arch-chroot /mnt/ mkinitcpio -p linux
 
 
 #swapfile
-arch-chroot /mnt/ truncate -s 0 /swapfile
-arch-chroot /mnt/ chattr +C /swapfile
-arch-chroot /mnt/ btrfs property set /swapfile compression none
+arch-chroot /mnt/ truncate -s 0 /swap/swapfile
+arch-chroot /mnt/ chattr +C /swap/swapfile
+arch-chroot /mnt/ btrfs property set /swap/swapfile compression none
 
-arch-chroot /mnt/ dd if=/dev/zero of=/swapfile bs=1M count=512 status=progress
-arch-chroot /mnt/ chmod 600 /swapfile
-arch-chroot /mnt/ mkswap /swapfile
-arch-chroot /mnt/ swapon /swapfile
-echo "/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
+arch-chroot /mnt/ dd if=/dev/zero of=/swap/swapfile bs=1G count=4 status=progress
+arch-chroot /mnt/ chmod 600 /swap/swapfile
+arch-chroot /mnt/ mkswap /swap/swapfile
+arch-chroot /mnt/ swapon /swap/swapfile
+echo "/swap/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
 
 arch-chroot /mnt/ mkdir -p /opt/ArchEvo
 arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
