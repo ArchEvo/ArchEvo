@@ -100,7 +100,7 @@ BINARIES=(/usr/bin/btrfs)
 FILES=(/crypto_keyfile.bin)
 HOOKS="base udev autodetect modconf block btrfs keyboard keymap encrypt filesystems"
 
-COMPRESSION="lzop"' > /mnt/etc/mkinitcpio.conf
+COMPRESSION="zstd"' > /mnt/etc/mkinitcpio.conf
 
 arch-chroot /mnt/ mkinitcpio -p linux
 
