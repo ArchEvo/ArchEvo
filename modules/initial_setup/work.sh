@@ -77,10 +77,12 @@ echo "user:password" | arch-chroot /mnt chpasswd
 uuid_sda2=$(blkid -s UUID -o value /dev/sda2)
 
 #remove line
+sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/d' /mnt/etc/default/grub
 sed -i '/GRUB_CMDLINE_LINUX=/d' /mnt/etc/default/grub
 sed -i '/GRUB_ENABLE_CRYPTODISK=y/d' /mnt/etc/default/grub
 
 #add line
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"' >> /mnt/etc/default/grub
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /mnt/etc/default/grub
 echo "GRUB_CMDLINE_LINUX=cryptdevice=UUID=$uuid_sda2:cryptroot" >> /mnt/etc/default/grub
 
