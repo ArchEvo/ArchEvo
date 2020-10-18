@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ ! -d "/sys/firmware/efi/" ]; then
+    echo -e "\e[1m\e[31mThis script is only designed for efi systems.\e[0m"
+    kill 0
+fi
+
+
 if [ ! -f "/bin/dialog" ]; then
     echo -e "\e[1m\e[31mPlease install 'dialog' first before the script can be started."
     echo -e "pacman -Sy dialog\e[0m"
