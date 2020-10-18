@@ -21,3 +21,5 @@ source /opt/ArchEvo/modules/update/snapper/work.sh
 source /opt/ArchEvo/modules/update/snapper/after_check.sh
 
 
+# install font and ttf
+source /opt/ArchEvo/modules/update/font/work.sh
