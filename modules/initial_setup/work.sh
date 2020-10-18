@@ -68,7 +68,7 @@ arch-chroot /mnt/ mkinitcpio -p linux
 echo "root:password" | arch-chroot /mnt chpasswd
 
 # add user
-arch-chroot /mnt useradd -m user
+arch-chroot /mnt useradd -m -g users -G wheel user
 
 # user passwd
 echo "user:password" | arch-chroot /mnt chpasswd
