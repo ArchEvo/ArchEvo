@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S ufw gufw 
+pacman -S ufw gufw --noconfirm
 
 systemctl enable ufw
 
