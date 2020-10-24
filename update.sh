@@ -28,3 +28,6 @@ source /opt/ArchEvo/modules/update/net_tools/work.sh
 
 # install ufw / firewall
 source /opt/ArchEvo/modules/update/ufw/work.sh
+
+# install support filesystems
+source /opt/ArchEvo/modules/update/filesystem/work.sh
