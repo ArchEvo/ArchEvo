@@ -25,3 +25,6 @@ source /opt/ArchEvo/modules/update/font/work.sh
 
 # install network tools
 source /opt/ArchEvo/modules/update/net_tools/work.sh
+
+# install ufw / firewall
+source /opt/ArchEvo/modules/update/ufw/work.sh
