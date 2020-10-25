@@ -1,10 +1,11 @@
 #!/bin/bash
 
-pacman -S --noconfirm git base-devel
+pacman -S --noconfirm git base-devel go
 
 git clone https://aur.archlinux.org/yay.git /tmp/ArchEvo_yay
 
 cd /tmp/ArchEvo_yay/
+chown user. -R /tmp/ArchEvo_yay
 
 su user -c "makepkg" # todo change username
 
