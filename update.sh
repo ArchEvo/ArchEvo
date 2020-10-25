@@ -31,3 +31,6 @@ source /opt/ArchEvo/modules/update/ufw/work.sh
 
 # install support filesystems
 source /opt/ArchEvo/modules/update/filesystem/work.sh
+
+# install libreoffice
+source /opt/ArchEvo/modules/update/libreoffice/work.sh
