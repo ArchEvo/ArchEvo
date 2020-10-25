@@ -34,3 +34,6 @@ source /opt/ArchEvo/modules/update/filesystem/work.sh
 
 # install libreoffice
 source /opt/ArchEvo/modules/update/libreoffice/work.sh
+
+# install yay
+source /opt/ArchEvo/modules/update/yay/work.sh
