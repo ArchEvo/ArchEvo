@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# get best mirror
+source /opt/ArchEvo/modules/update/reflector/work.sh
+
 # install and config gnome
 source /opt/ArchEvo/modules/update/gnome/before_check.sh
 source /opt/ArchEvo/modules/update/gnome/work.sh
