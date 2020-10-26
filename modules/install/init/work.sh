@@ -49,6 +49,10 @@ pacstrap /mnt base linux linux-firmware grub btrfs-progs efibootmgr lzop zstd cr
 # create fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# add ramdisk for tmp
+echo "tmpfs   /tmp            tmpfs   rw       0       0
+tmpfs   /var/tmp        tmpfs   rw      0        0" >> /mnt/etc/fstab
+
 # conig new system
 echo "ArchEvo" > /mnt/etc/hostname
 echo LANG=de_DE.UTF-8 > /mnt/etc/locale.conf
