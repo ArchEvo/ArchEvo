@@ -37,3 +37,6 @@ source /opt/ArchEvo/modules/update/libreoffice/work.sh
 
 # install yay
 source /opt/ArchEvo/modules/update/yay/work.sh
+
+# install and config sudo
+source /opt/ArchEvo/modules/update/sudo/work.sh
