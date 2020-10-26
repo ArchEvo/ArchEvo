@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# pacman update signature
+source /opt/ArchEvo/modules/update/pacman/work.sh
+
 # get best mirror
 source /opt/ArchEvo/modules/update/reflector/work.sh
 
