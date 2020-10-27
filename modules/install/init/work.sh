@@ -11,7 +11,7 @@ sgdisk --new=2:0:0 --typecode=2:8300 --change-name=2:'cryptroot' /dev/sda
 #create filesystem boot/efi
 mkfs.vfat -F 32 -n EFI /dev/sda1
 #create crypt luks
-echo -n "password" | cryptsetup -q --key-size 512 --hash sha512 --use-random --type luks1 luksFormat /dev/sda2 -
+echo -n "password" | cryptsetup -q --cipher aes-xts-plain64 --iter-time 3000 --key-size 512 --hash sha512 --use-random --type luks1 luksFormat /dev/sda2 -
 
 #open crypt filesystem
 echo "password" |  cryptsetup luksOpen /dev/sda2 cryptroot -
