@@ -5,7 +5,7 @@ if [[ $(ping -c 2 google.de &> /dev/null ; echo $?) != 0 ]] ; then
     kill 0
 fi
 
-if [[ $(grep aes /proc/cpuinfo | grep flags | grep -q aes; echo $?) != 1 ]] ; then
+if [[ $(cat /proc/cpuinfo | grep flags | grep -q aes; echo $?) != 1 ]] ; then
     echo -e "\e[1m\e[31mYour CPU does not support AES.
 The installation can continue.
 However, your system may be slow.\e[0m"
