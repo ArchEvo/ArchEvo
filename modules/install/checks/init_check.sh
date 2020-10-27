@@ -1,5 +1,17 @@
 #!/bin/bash
 
+if [[ $(ping -c 2 google.de &> /dev/null ; echo $?) != 0 ]] ; then
+    echo -e "\e[1m\e[31mThe internet connection does not work.\e[0m"
+    kill 0
+fi
+
+if [[ $(grep aes /proc/cpuinfo | grep flags | grep -q aes; echo $?) != 1 ]] ; then
+    echo -e "\e[1m\e[31mYour CPU does not support AES.
+The installation can continue.
+However, your system may be slow.\e[0m"
+    sleep 10
+fi
+
 if [ ! -d "/sys/firmware/efi/" ]; then
     echo -e "\e[1m\e[31mThis script is only designed for efi systems.\e[0m"
     kill 0
