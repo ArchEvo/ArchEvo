@@ -101,10 +101,10 @@ chmod 600 /mnt/boot/initramfs-linux*
 echo -n "password" | cryptsetup luksAddKey /dev/sda2 /mnt/crypto_keyfile.bin -
 
 #overwrite mkinitcpio.conf
-echo 'MODULES=()
+echo 'MODULES=(crc32c-intel)
 BINARIES=(/usr/bin/btrfs)
 FILES=(/crypto_keyfile.bin)
-HOOKS="base udev autodetect modconf block btrfs keyboard keymap consolefont encrypt filesystems"
+HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems btrfs"
 
 COMPRESSION="zstd"' > /mnt/etc/mkinitcpio.conf
 
