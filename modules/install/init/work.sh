@@ -104,7 +104,7 @@ echo -n "password" | cryptsetup luksAddKey /dev/sda2 /mnt/crypto_keyfile.bin -
 echo 'MODULES=(crc32c-intel)
 BINARIES=(/usr/bin/btrfs)
 FILES=(/crypto_keyfile.bin)
-HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems btrfs"
+HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems"
 
 COMPRESSION="zstd"' > /mnt/etc/mkinitcpio.conf
 
