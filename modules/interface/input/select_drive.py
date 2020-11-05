@@ -7,7 +7,7 @@ from functions import print_head
 
 print_head('Drive configuration', 'Please select the drive where Arch Linux will be installed:')
 
-drives = subprocess.check_output('lsblk -d -o NAME | tail -n +2 | grep -v "^sr[0-999]"', shell=True).decode().strip()
+drives = subprocess.check_output('lsblk -d -o NAME | tail -n +2 | grep -v "^sr[0-999]" | grep -v "^loop[0-999]"', shell=True).decode().strip()
 drives = drives.splitlines()
 
 
