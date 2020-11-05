@@ -9,7 +9,7 @@ from functions import selection_table
 
 print_head('Locale configuration', 'Please enter the locale:')
 
-f = open("/etc/locale.gen_nn", "r")
+f = open("/etc/locale.gen", "r")
 file = f.read()
 locales_list = file.split('\n')
 
