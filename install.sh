@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 #init checks
 source ./modules/install/checks/init_check.sh
 

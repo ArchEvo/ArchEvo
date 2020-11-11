@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # pacman update signature
 source /opt/ArchEvo/modules/update/pacman/work.sh
 
