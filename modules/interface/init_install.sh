@@ -2,7 +2,7 @@
 
 # Configuration directory
 mkdir -p /opt/ArchEvoConf
-rm /opt/ArchEvoConf/*
+rm -f /opt/ArchEvoConf/*
 
 ./modules/interface/input/select_key_map.py
 
