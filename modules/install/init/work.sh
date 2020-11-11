@@ -44,7 +44,7 @@ mkdir -p /mnt/boot/efi
 mount "/dev/$( echo $INPUT_INSTALL_DRIVE)1" /mnt/boot/efi
 
 # install init system
-pacstrap /mnt base linux linux-firmware grub btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim amd-ucode intel-ucode reflector
+pacstrap /mnt base $INPUT_LINUX_VERSION $( echo $INPUT_LINUX_VERSION)-headers linux-firmware grub btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim amd-ucode intel-ucode reflector
 
 # create fstab
 genfstab -U /mnt >> /mnt/etc/fstab
