@@ -78,7 +78,7 @@ arch-chroot /mnt/ reflector -c Germany -a 2 -p https --sort rate --save /etc/pac
 ln -sf "/mnt/usr/share/zoneinfo/$INPUT_TIMEZONE_CONTINENT/$INPUT_TIMEZONE_CITY" /mnt/etc/localtime
 
 arch-chroot /mnt/ locale-gen
-arch-chroot /mnt/ mkinitcpio -p linux
+arch-chroot /mnt/ mkinitcpio -p $INPUT_LINUX_VERSION
 
 # root passwd
 echo "root:$INPUT_ROOT_PASSWORD" | arch-chroot /mnt chpasswd
@@ -120,7 +120,7 @@ HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt fi
 
 COMPRESSION="zstd"' > /mnt/etc/mkinitcpio.conf
 
-arch-chroot /mnt/ mkinitcpio -p linux
+arch-chroot /mnt/ mkinitcpio -p $INPUT_LINUX_VERSION
 
 
 #swapfile
