@@ -123,19 +123,20 @@ arch-chroot /mnt/ mkinitcpio -p $INPUT_LINUX_VERSION
 
 
 #swapfile
-arch-chroot /mnt/ truncate -s 0 /swap/swapfile
-arch-chroot /mnt/ chattr +C /swap/swapfile
-arch-chroot /mnt/ btrfs property set /swap/swapfile compression none
+if [ $INPUT_SWAP_SIZE != 0 ]; then
+    arch-chroot /mnt/ truncate -s 0 /swap/swapfile
+    arch-chroot /mnt/ chattr +C /swap/swapfile
+    arch-chroot /mnt/ btrfs property set /swap/swapfile compression none
 
-arch-chroot /mnt/ dd if=/dev/zero of=/swap/swapfile bs=1G count=$INPUT_SWAP_SIZE status=progress
-arch-chroot /mnt/ chmod 600 /swap/swapfile
-arch-chroot /mnt/ mkswap /swap/swapfile
-arch-chroot /mnt/ swapon /swap/swapfile
-echo "/swap/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
+    arch-chroot /mnt/ dd if=/dev/zero of=/swap/swapfile bs=1G count=$INPUT_SWAP_SIZE status=progress
+    arch-chroot /mnt/ chmod 600 /swap/swapfile
+    arch-chroot /mnt/ mkswap /swap/swapfile
+    arch-chroot /mnt/ swapon /swap/swapfile
+    echo "/swap/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
+fi
 
-arch-chroot /mnt/ mkdir -p /opt/ArchEvo
-arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
-
+  arch-chroot /mnt/ mkdir -p /opt/ArchEvo
+  arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
 
 
 arch-chroot /mnt/ sync
