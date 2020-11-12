@@ -111,13 +111,12 @@ chmod 600 /mnt/crypto_keyfile.bin
 chmod 600 /mnt/boot/initramfs-linux*
 echo -n "$INPUT_LUKS_PASSWORD" | cryptsetup luksAddKey "/dev/$( echo $INPUT_INSTALL_DRIVE)2" /mnt/crypto_keyfile.bin -
 
-#overwrite mkinitcpio.conf
-echo 'MODULES=(crc32c-intel)
-BINARIES=(/usr/bin/btrfs)
-FILES=(/crypto_keyfile.bin)
-HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems"
-
-COMPRESSION="zstd"' > /mnt/etc/mkinitcpio.conf
+#mkinitcpio.conf
+sed -i '/MODULES=()/c\MODULES=(crc32c-intel)' /mnt/etc/mkinitcpio.conf
+sed -i '/BINARIES=()/c\BINARIES=(/usr/bin/btrfs)' /mnt/etc/mkinitcpio.conf
+sed -i '/FILES=()/c\FILES=(/crypto_keyfile.bin)' /mnt/etc/mkinitcpio.conf
+sed -i '/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)/c\HOOKS=(base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems)' /mnt/etc/mkinitcpio.conf
+echo 'COMPRESSION=(zstd)' >> /mnt/etc/mkinitcpio.conf
 
 arch-chroot /mnt/ mkinitcpio -p $INPUT_LINUX_VERSION
 
@@ -135,8 +134,8 @@ if [ $INPUT_SWAP_SIZE != 0 ]; then
     echo "/swap/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
 fi
 
-  arch-chroot /mnt/ mkdir -p /opt/ArchEvo
-  arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
+arch-chroot /mnt/ mkdir -p /opt/ArchEvo
+arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
 
 
 arch-chroot /mnt/ sync
