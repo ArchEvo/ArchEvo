@@ -39,10 +39,7 @@ export INPUT_LINUX_VERSION=$(cat /opt/ArchEvoConf/linux_version)
 
 
 # set locale environment
-export LANGAUE=$INPUT_LOCALE.UTF-8
-export LANG=$INPUT_LOCALE.UTF-8
 export LC_ALL=C
-locale-gen de_DE.UTF-8
 
 #echo $INPUT_VCONSOLE_KEYMAP
 #echo $INPUT_INSTALL_DRIVE
