@@ -9,8 +9,11 @@ source ./modules/install/checks/init_check.sh
 source ./modules/interface/init_install.sh
 
 #install archlinux 
-source ./modules/install/init/before_check.sh
+source ./modules/install/init/before.sh
 source ./modules/install/init/work.sh
-source ./modules/install/init/after_check.sh
 
+# start update script; install/config packages 
 arch-chroot /mnt/ sh /opt/ArchEvo/update.sh
+
+# umount partition
+source ./modules/install/init/after.sh
