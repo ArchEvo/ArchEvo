@@ -1,6 +1,11 @@
 #!/bin/bash
 
 sync
+
+if [ $INPUT_SWAP_SIZE != 0 ]; then
+    arch-chroot /mnt/ swapoff /swap/swapfile
+fi
+
 umount /mnt/boot/efi
 umount /mnt/home
 umount /mnt/.snapshots
