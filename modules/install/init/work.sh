@@ -137,8 +137,6 @@ fi
 arch-chroot /mnt/ mkdir -p /opt/ArchEvo
 arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
 
+cp -r /opt/ArchEvoConf /mnt/opt/ArchEvoConf
 
 arch-chroot /mnt/ sync
-
-# only for debug
-arch-chroot /mnt/ pacman -Sy dhcpcd htop --noconfirm
