@@ -8,6 +8,9 @@ source /opt/ArchEvo/modules/update/pacman/work.sh
 # get best mirror
 source /opt/ArchEvo/modules/update/reflector/work.sh
 
+# install and config ntp
+source /opt/ArchEvo/modules/update/ntp/work.sh
+
 # install and config gnome
 source /opt/ArchEvo/modules/update/gnome/before_check.sh
 source /opt/ArchEvo/modules/update/gnome/work.sh
@@ -17,11 +20,6 @@ source /opt/ArchEvo/modules/update/gnome/after_check.sh
 source /opt/ArchEvo/modules/update/networkmanager/before_check.sh
 source /opt/ArchEvo/modules/update/networkmanager/work.sh
 source /opt/ArchEvo/modules/update/networkmanager/after_check.sh
-
-# install and config ntp
-source /opt/ArchEvo/modules/update/ntp/before_check.sh
-source /opt/ArchEvo/modules/update/ntp/work.sh
-source /opt/ArchEvo/modules/update/ntp/after_check.sh
 
 # install and config snapper
 source /opt/ArchEvo/modules/update/snapper/before_check.sh
@@ -57,3 +55,6 @@ source /opt/ArchEvo/modules/update/avahi/work.sh
 
 # install gpu driver
 source /opt/ArchEvo/modules/update/gpu_driver/work.sh
+
+# config timedatectl/
+source /opt/ArchEvo/modules/update/timedatectl/work.sh
