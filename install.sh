@@ -29,7 +29,7 @@ source ./modules/install/checks/init_check.sh
 
 if [ "$DEBUG" == "true" ] && [ "$DEBUGLANGUAGE" == "false" ]; then
     # debug install
-    source ./modules/interface/init_install.sh
+    source ./modules/interface/init_debug.sh
 elif [ "$DEBUGLANGUAGE" == "false" ]; then
     # init interface / default
     source ./modules/interface/init_default.sh.sh
