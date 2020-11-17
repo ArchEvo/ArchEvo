@@ -1,6 +1,22 @@
 #!/bin/bash
 
 set -e
+set -u
+set -o pipefail
+
+# set environment
+export INPUT_VCONSOLE_KEYMAP=$(cat /opt/ArchEvoConf/vconsole_keymap)
+export INPUT_HOSTNAME=$(cat /opt/ArchEvoConf/hostname)
+export INPUT_TIMEZONE_CITY=$(cat /opt/ArchEvoConf/timezone_city)
+export INPUT_TIMEZONE_CONTINENT=$(cat /opt/ArchEvoConf/timezone_continent)
+export INPUT_LOCALE=$(cat /opt/ArchEvoConf/locale)
+export INPUT_USER_NAME=$(cat /opt/ArchEvoConf/user_name)
+export INPUT_GPU_DRIVER=$(cat /opt/ArchEvoConf/gpu_driver)
+export INPUT_LINUX_VERSION=$(cat /opt/ArchEvoConf/linux_version)
+
+# set locale environment
+export LC_ALL=C
+
 
 # pacman update signature
 source /opt/ArchEvo/modules/update/pacman/work.sh
