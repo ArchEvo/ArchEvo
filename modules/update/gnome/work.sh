@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pacman -Syy
-pacman -S gnome gdm nautilus-share --noconfirm
+pacman -S gnome gdm nautilus-share archlinux-wallpaper --noconfirm
 
 #-->Service
 systemctl enable gdm
@@ -11,3 +11,9 @@ su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.
 su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.software download-updates false"
 su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.peripherals.keyboard remember-numlock-state true"
 su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true"
+su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.screensaver picture-uri 'file:///usr/share/backgrounds/archlinux/simple.png'"
+su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.screensaver picture-opacity 100"
+su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.screensaver picture-options 'zoom'"
+su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/archlinux/simple.png'"
+su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-options 'zoom'"
+su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-opacity 100"
