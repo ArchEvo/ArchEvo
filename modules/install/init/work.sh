@@ -120,8 +120,8 @@ echo 'COMPRESSION=(zstd)' >> /mnt/etc/mkinitcpio.conf
 
 arch-chroot /mnt/ mkinitcpio -p $INPUT_LINUX_VERSION
 
-echo '127.0.0.1	localhost $INPUT_HOSTNAME.localdomain $INPUT_HOSTNAME' >> /etc/hosts
-echo '::1	localhost' >> /etc/hosts
+echo '127.0.0.1	localhost $INPUT_HOSTNAME.localdomain $INPUT_HOSTNAME' >> /mnt/etc/hosts
+echo '::1	localhost' >> /mnt/etc/hosts
 
 #swapfile
 if [ $INPUT_SWAP_SIZE != 0 ]; then
