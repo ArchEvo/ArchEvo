@@ -72,5 +72,8 @@ source /opt/ArchEvo/modules/update/avahi/work.sh
 # install gpu driver
 source /opt/ArchEvo/modules/update/gpu_driver/work.sh
 
-# config timedatectl/
+# config timedatectl
 source /opt/ArchEvo/modules/update/timedatectl/work.sh
+
+# install codecs and hardware video acceleration
+source /opt/ArchEvo/modules/update/codecs/work.sh
