@@ -26,6 +26,8 @@ done
 #init checks
 source ./modules/install/checks/init_check.sh
 
+# init tools in before
+source ./modules/interface/before.sh
 
 if [ "$DEBUG" == "true" ] && [ "$DEBUGLANGUAGE" == "false" ]; then
     # debug install
