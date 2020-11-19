@@ -6,7 +6,7 @@ from functions import print_request
 
 print_head('GPU configuration', 'Please enter your gpu:')
 
-gpus = ['AMD/ATI', 'Nvidia', 'Intel', 'VM']
+gpus = ['amd/ati', 'nvidia', 'intel', 'vm']
 
 for gpu in gpus:
     print(gpu)
@@ -23,25 +23,25 @@ while True:
 
 print_request('Please select the graphic card driver:')
 
-if selected_gpu == 'AMD/ATI':
+if selected_gpu == 'amd/ati':
     gpu_drivers = ['amdgpu', 'ati']
     note = """"
 note: ...amd...
 """
 
-if selected_gpu == 'Nvidia':
-    gpu_drivers = ['nouveau', 'nvidia']
+if selected_gpu == 'nvidia':
+    gpu_drivers = ['nouveau', 'nvidia', 'nvidia-lts']
     note = """
 note: ...nvidia...
 """
 
-if selected_gpu == 'Intel':
+if selected_gpu == 'intel':
     gpu_drivers = ['intel']
     note = """
 note: ...intel...
 """
 
-if selected_gpu == 'VM':
+if selected_gpu == 'vm':
     gpu_drivers = ['virtualbox', 'vmware']
     note= """
 note: ...vm...
