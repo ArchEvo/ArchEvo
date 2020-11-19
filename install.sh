@@ -32,7 +32,7 @@ if [ "$DEBUG" == "true" ] && [ "$DEBUGLANGUAGE" == "false" ]; then
     source ./modules/interface/init_debug.sh
 elif [ "$DEBUGLANGUAGE" == "false" ]; then
     # init interface / default
-    source ./modules/interface/init_default.sh.sh
+    source ./modules/interface/init_default.sh
 fi
 
 if [ "$DEBUGLANGUAGE" != "false" ]; then
