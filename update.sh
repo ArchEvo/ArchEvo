@@ -12,6 +12,7 @@ export INPUT_TIMEZONE_CONTINENT=$(cat /opt/ArchEvoConf/timezone_continent)
 export INPUT_LOCALE=$(cat /opt/ArchEvoConf/locale)
 export INPUT_USER_NAME=$(cat /opt/ArchEvoConf/user_name)
 export INPUT_GPU_DRIVER=$(cat /opt/ArchEvoConf/gpu_driver)
+export INPUT_CPU_VENDOR=$(cat /opt/ArchEvoConf/cpu_vendor)
 export INPUT_LINUX_VERSION=$(cat /opt/ArchEvoConf/linux_version)
 export INPUT_REFLECTOR_COUNTRY=$(cat /opt/ArchEvoConf/pacman_reflector_country)
 
@@ -78,3 +79,6 @@ source /opt/ArchEvo/modules/update/timedatectl/work.sh
 
 # install codecs and hardware video acceleration
 source /opt/ArchEvo/modules/update/codecs/work.sh
+
+# install cpu microcode
+source /opt/ArchEvo/modules/update/cpu_microcode/work.sh

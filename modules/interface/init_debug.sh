@@ -20,6 +20,7 @@ echo 'alex' > /opt/ArchEvoConf/user_name
 echo '123456' > /opt/ArchEvoConf/user_password
 
 echo 'vmware' > /opt/ArchEvoConf/gpu_driver
+echo 'intel' > /opt/ArchEvoConf/cpu_vendor
 echo 'linux' > /opt/ArchEvoConf/linux_version
 echo 'Germany' > /opt/ArchEvoConf/pacman_reflector_country
 
@@ -36,6 +37,7 @@ export INPUT_ROOT_PASSWORD=$(cat /opt/ArchEvoConf/root_password)
 export INPUT_USER_NAME=$(cat /opt/ArchEvoConf/user_name)
 export INPUT_USER_PASSWORD=$(cat /opt/ArchEvoConf/user_password)
 export INPUT_GPU_DRIVER=$(cat /opt/ArchEvoConf/gpu_driver)
+export INPUT_CPU_VENDOR=$(cat /opt/ArchEvoConf/cpu_vendor)
 export INPUT_LINUX_VERSION=$(cat /opt/ArchEvoConf/linux_version)
 export INPUT_REFLECTOR_COUNTRY=$(cat /opt/ArchEvoConf/pacman_reflector_country)
 
