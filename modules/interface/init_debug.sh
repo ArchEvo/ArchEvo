@@ -21,7 +21,7 @@ echo '123456' > /opt/ArchEvoConf/user_password
 
 echo 'vmware' > /opt/ArchEvoConf/gpu_driver
 echo 'linux' > /opt/ArchEvoConf/linux_version
-
+echo 'Germany' > /opt/ArchEvoConf/pacman_reflector_country
 
 # set environment
 export INPUT_VCONSOLE_KEYMAP=$(cat /opt/ArchEvoConf/vconsole_keymap)
@@ -37,6 +37,7 @@ export INPUT_USER_NAME=$(cat /opt/ArchEvoConf/user_name)
 export INPUT_USER_PASSWORD=$(cat /opt/ArchEvoConf/user_password)
 export INPUT_GPU_DRIVER=$(cat /opt/ArchEvoConf/gpu_driver)
 export INPUT_LINUX_VERSION=$(cat /opt/ArchEvoConf/linux_version)
+export INPUT_REFLECTOR_COUNTRY=$(cat /opt/ArchEvoConf/pacman_reflector_country)
 
 # set locale environment
 export LC_ALL=C

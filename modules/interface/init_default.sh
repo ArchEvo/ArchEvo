@@ -20,7 +20,7 @@ rm -f /opt/ArchEvoConf/*
 
 ./modules/interface/input/select_gpu.py
 ./modules/interface/input/select_linux_version.py
-
+./modules/interface/input/select_pacman_reflector_country.py
 
 # set environment
 export INPUT_VCONSOLE_KEYMAP=$(cat /opt/ArchEvoConf/vconsole_keymap)
@@ -36,6 +36,7 @@ export INPUT_USER_NAME=$(cat /opt/ArchEvoConf/user_name)
 export INPUT_USER_PASSWORD=$(cat /opt/ArchEvoConf/user_password)
 export INPUT_GPU_DRIVER=$(cat /opt/ArchEvoConf/gpu_driver)
 export INPUT_LINUX_VERSION=$(cat /opt/ArchEvoConf/linux_version)
+export INPUT_REFLECTOR_COUNTRY=$(cat /opt/ArchEvoConf/pacman_reflector_country)
 
 
 # set locale environment
