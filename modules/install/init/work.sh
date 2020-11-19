@@ -73,7 +73,8 @@ LC_IDENTIFICATION=$INPUT_LOCALE.UTF-8
 "> /mnt/etc/locale.conf
 
 # reflector: get fastest arch linux archive server; https only
-arch-chroot /mnt/ reflector --verbose -l 10 -a 12 --score 50 --sort rate -p https --country '$INPUT_REFLECTOR_COUNTRY'  --save /etc/pacman.d/mirrorlist
+reflector --verbose -l 10 -a 12 --score 50 --sort rate -p https --country '$INPUT_REFLECTOR_COUNTRY'  --save /etc/pacman.d/mirrorlist
+cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 ln -sf "/mnt/usr/share/zoneinfo/$INPUT_TIMEZONE_CONTINENT/$INPUT_TIMEZONE_CITY" /mnt/etc/localtime
 
