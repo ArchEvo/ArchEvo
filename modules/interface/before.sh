@@ -1,3 +1,4 @@
 #!/bin/bash
 
-pacman -Syy --noconfirm lshw
+pacman -Sy
+pacman -S --noconfirm lshw

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pacman -S snapper --noconfirm
+pacman -S --noconfirm --needed snapper

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pacman -S dnsutils net-tools iptraf-ng net-tools inetutils --noconfirm
+pacman -S --noconfirm --needed dnsutils net-tools iptraf-ng net-tools inetutils

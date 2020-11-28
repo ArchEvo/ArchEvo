@@ -1,7 +1,6 @@
 #!/bin/bash
 
-pacman -Syy
-pacman -S gnome gdm nautilus-share archlinux-wallpaper --noconfirm
+pacman -S --noconfirm --needed gnome gdm nautilus-share archlinux-wallpaper
 
 #-->Service
 systemctl enable gdm

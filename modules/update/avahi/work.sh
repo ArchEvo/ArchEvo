@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --noconfirm avahi
+pacman -S --noconfirm --needed avahi
 
 
 #-->Service

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S ntp --noconfirm
+pacman -S --noconfirm --needed ntp
 
 
 #-->Service

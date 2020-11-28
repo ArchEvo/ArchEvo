@@ -2,35 +2,35 @@
 
 if [ $INPUT_GPU_DRIVER == intel ];
 then
-   pacman -Syy --noconfirm xf86-video-intel
+   pacman -S --noconfirm --needed xf86-video-intel
 fi
 
 if [ $INPUT_GPU_DRIVER == ati ];
 then
-   pacman -Syy --noconfirm xf86-video-ati
+   pacman -S --noconfirm --needed xf86-video-ati
 fi
 
 if [ $INPUT_GPU_DRIVER == amdgpu ];
 then
-   pacman -Syy --noconfirm xf86-video-amdgpu
+   pacman -S --noconfirm --needed xf86-video-amdgpu
 fi
 
 if [ $INPUT_GPU_DRIVER == nvidia ];
 then
-   pacman -Syy --noconfirm nvidia
+   pacman -S --noconfirm --needed nvidia
 fi
 
 if [ $INPUT_GPU_DRIVER == nouveau ];
 then
-   pacman -Syy --noconfirm xf86-video-nouveau
+   pacman -S --noconfirm --needed xf86-video-nouveau
 fi
 
 if [ $INPUT_GPU_DRIVER == vmware ];
 then
-   pacman -Syy --noconfirm open-vm-tools
+   pacman -S --noconfirm --needed open-vm-tools
 fi
 
 if [ $INPUT_GPU_DRIVER == virtualbox ];
 then
-   pacman -Syy --noconfirm virtualbox-guest-utils
+   pacman -S --noconfirm --needed virtualbox-guest-utils
 fi

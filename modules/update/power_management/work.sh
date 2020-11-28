@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --noconfirm acpid tlp powertop
+pacman -S --noconfirm --needed acpid tlp powertop
 
 systemctl enable acpid
 systemctl enable tlp

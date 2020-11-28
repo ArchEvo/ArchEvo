@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --noconfirm git base-devel go
+pacman -S --noconfirm --needed git base-devel go
 
 git clone https://aur.archlinux.org/yay.git /tmp/ArchEvo_yay
 
