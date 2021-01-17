@@ -1,7 +1,20 @@
 #!/bin/bash
 
 pacman -Sy
-pacman -S --noconfirm --needed archlinux-keyring
+pacman -S --noconfirm --needed archlinux-keyring haveged
+systemctl start haveged
+systemctl enable haveged
+
+for i in {12..01}
+do
+  clear
+  echo -n "Please wait $i seconds. Entropy is created."
+  sleep 1
+done
+
+rm -fr /etc/pacman.d/gnupg
+
 pacman-key --init
 pacman-key --populate archlinux
-pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net 
+pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net
+
