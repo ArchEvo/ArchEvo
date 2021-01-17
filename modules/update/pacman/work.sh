@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pacman -Sy
-pacman -S --noconfirm --needed archlinux-keyring haveged
+pacman -S --noconfirm --needed archlinux-keyring haveged pacman-contrib
 systemctl start haveged
 systemctl enable haveged
 
