@@ -55,6 +55,8 @@ tmpfs   /var/tmp        tmpfs   rw      0        0" >> /mnt/etc/fstab
 
 # conig new system
 echo "KEYMAP=$INPUT_VCONSOLE_KEYMAP" > /mnt/etc/vconsole.conf
+echo "FONT=lat2-16" >> /mnt/etc/vconsole.conf
+echo "FONT_MAP=8859-2" >> /mnt/etc/vconsole.conf
 echo $INPUT_HOSTNAME > /mnt/etc/hostname
 echo "$INPUT_LOCALE.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 echo "LANG=$INPUT_LOCALE.UTF-8 
