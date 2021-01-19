@@ -85,3 +85,6 @@ source /opt/ArchEvo/modules/update/cpu_microcode/work.sh
 
 # install gvfs
 source /opt/ArchEvo/modules/update/gvfs/work.sh
+
+# install utilities
+source /opt/ArchEvo/modules/update/utilities/work.sh
