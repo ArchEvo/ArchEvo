@@ -4,6 +4,7 @@ pacman -Sy
 pacman -S --noconfirm --needed archlinux-keyring haveged pacman-contrib
 systemctl start haveged
 systemctl enable haveged
+systemctl enable paccache.timer
 
 for i in {12..01}
 do
