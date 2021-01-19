@@ -34,3 +34,6 @@ if [ $INPUT_GPU_DRIVER == virtualbox ];
 then
    pacman -S --noconfirm --needed virtualbox-guest-utils
 fi
+
+
+pacman -S --noconfirm --needed mesa
