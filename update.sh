@@ -91,3 +91,6 @@ source /opt/ArchEvo/modules/update/utilities/work.sh
 
 # install audio
 source /opt/ArchEvo/modules/update/audio/work.sh
+
+# install bluetooth
+source /opt/ArchEvo/modules/update/bluetooth/work.sh
