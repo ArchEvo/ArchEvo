@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --noconfirm --needed gnome gdm nautilus-share archlinux-wallpaper
+pacman -S --noconfirm --needed gnome gdm nautilus-share archlinux-wallpaper libopenraw ffmpegthumbnailer tumbler android-udev
 
 #-->Service
 systemctl enable gdm
