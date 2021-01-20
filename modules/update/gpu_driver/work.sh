@@ -28,6 +28,7 @@ fi
 if [ $INPUT_GPU_DRIVER == vmware ];
 then
    pacman -S --noconfirm --needed open-vm-tools xf86-video-vmware xf86-input-vmmouse
+   systemctl enable vmtoolsd
 fi
 
 if [ $INPUT_GPU_DRIVER == virtualbox ];
