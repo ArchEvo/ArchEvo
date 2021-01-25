@@ -31,13 +31,13 @@ btrfs sub create /mnt/@snapshots
 umount /mnt
 
 #mount subvol
-mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@root /dev/mapper/cryptroot /mnt
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=60,subvol=@root /dev/mapper/cryptroot /mnt
 
 mkdir /mnt/{home,.snapshots,swap}
 
-mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@home /dev/mapper/cryptroot /mnt/home/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=60,subvol=@home /dev/mapper/cryptroot /mnt/home/
 mount -o ssd,noatime,subvol=@swap /dev/mapper/cryptroot /mnt/swap/
-mount -o compress=zstd,space_cache=v2,ssd,noatime,commit=60,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=60,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
 
 #mount efi
 mkdir -p /mnt/boot/efi
