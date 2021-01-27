@@ -68,9 +68,6 @@ source /opt/ArchEvo/modules/update/sudo/work.sh
 # install and config power management
 source /opt/ArchEvo/modules/update/power_management/work.sh
 
-# install avahi
-#source /opt/ArchEvo/modules/update/avahi/work.sh
-
 # install gpu driver
 source /opt/ArchEvo/modules/update/gpu_driver/work.sh
 
