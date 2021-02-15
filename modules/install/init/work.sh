@@ -94,15 +94,13 @@ echo "$INPUT_USER_NAME:$INPUT_USER_PASSWORD" | arch-chroot /mnt chpasswd
 #grub edit
 uuid_drive_part2=$(blkid -s UUID -o value "/dev/$( echo $INPUT_INSTALL_DRIVE)2")
 
-#remove line
-sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/d' /mnt/etc/default/grub
-sed -i '/GRUB_CMDLINE_LINUX=/d' /mnt/etc/default/grub
-sed -i '/GRUB_ENABLE_CRYPTODISK=y/d' /mnt/etc/default/grub
 
-#add line
-echo 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"' >> /mnt/etc/default/grub
-echo "GRUB_ENABLE_CRYPTODISK=y" >> /mnt/etc/default/grub
-echo "GRUB_CMDLINE_LINUX=cryptdevice=UUID=$uuid_drive_part2:cryptroot" >> /mnt/etc/default/grub
+#replace grub config
+sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"/' /mnt/etc/default/grub
+sed -i 's/GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX=cryptdevice=UUID='$uuid_drive_part2':cryptroot/' /mnt/etc/default/grub
+sed -i 's/#GRUB_ENABLE_CRYPTODISK=.*/GRUB_ENABLE_CRYPTODISK=y/' /mnt/etc/default/grub
+sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=2/' /mnt/etc/default/grub 
+
 
 # grub config gen
 arch-chroot /mnt/ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch-crypt
@@ -114,12 +112,14 @@ chmod 600 /mnt/crypto_keyfile.bin
 chmod 600 /mnt/boot/initramfs-linux*
 echo -n "$INPUT_LUKS_PASSWORD" | cryptsetup luksAddKey "/dev/$( echo $INPUT_INSTALL_DRIVE)2" /mnt/crypto_keyfile.bin -
 
-#mkinitcpio.conf
-sed -i '/MODULES=()/c\MODULES=(crc32c-intel)' /mnt/etc/mkinitcpio.conf
-sed -i '/BINARIES=()/c\BINARIES=(/usr/bin/btrfs)' /mnt/etc/mkinitcpio.conf
-sed -i '/FILES=()/c\FILES=(/crypto_keyfile.bin)' /mnt/etc/mkinitcpio.conf
-sed -i '/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)/c\HOOKS=(base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems)' /mnt/etc/mkinitcpio.conf
-echo 'COMPRESSION=(zstd)' >> /mnt/etc/mkinitcpio.conf
+
+#replace mkinitcpio.conf
+sed -i 's/BINARIES=()/BINARIES=(\/usr\/bin\/btrfs)/' /mnt/etc/mkinitcpio.conf
+sed -i 's/FILES=()/FILES=(\/crypto_keyfile.bin)/' /mnt/etc/mkinitcpio.conf
+sed -i 's/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)/HOOKS=(base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems)/' /mnt/etc/mkinitcpio.conf
+sed -i 's/MODULES=()/MODULES=(crc32c-intel)/' /mnt/etc/mkinitcpio.conf
+sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/' /mnt/etc/mkinitcpio.conf
+
 
 arch-chroot /mnt/ mkinitcpio -p $INPUT_LINUX_VERSION
 
