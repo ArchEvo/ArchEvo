@@ -29,6 +29,10 @@ source /opt/ArchEvo/modules/update/reflector/work.sh
 # install and config ntp
 source /opt/ArchEvo/modules/update/ntp/work.sh
 
+# install audio
+source /opt/ArchEvo/modules/update/pipewire/work.sh
+#source /opt/ArchEvo/modules/update/audio/work.sh
+
 # install and config gnome
 source /opt/ArchEvo/modules/update/gnome/before_check.sh
 source /opt/ArchEvo/modules/update/gnome/work.sh
@@ -85,10 +89,6 @@ source /opt/ArchEvo/modules/update/gvfs/work.sh
 
 # install utilities
 source /opt/ArchEvo/modules/update/utilities/work.sh
-
-# install audio
-source /opt/ArchEvo/modules/update/pipewire/work.sh
-#source /opt/ArchEvo/modules/update/audio/work.sh
 
 # install bluetooth
 source /opt/ArchEvo/modules/update/bluetooth/work.sh
