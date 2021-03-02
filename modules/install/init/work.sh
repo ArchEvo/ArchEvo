@@ -139,6 +139,9 @@ if [ $INPUT_SWAP_SIZE != 0 ]; then
     echo "/swap/swapfile none swap defaults 0 0" >> /mnt/etc/fstab
 fi
 
+# limited rights to the boot partition
+chmod -R 700 /mnt/boot
+
 arch-chroot /mnt/ mkdir -p /opt/ArchEvo
 arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
 
