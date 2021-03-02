@@ -8,7 +8,7 @@ pacman -S --noconfirm --needed jasper libwebp
 pacman -S --noconfirm --needed flac wavpack lame libmad opus libvorbis libdca faad2 libfdk-aac
 
 #video codecs
-pacman -S --noconfirm --needed ffmpeg gstreamer gst-plugins-base gst-plugins-ugly gst-plugins-good gst-libav libavif libheif aom dav1d rav1e libde265 libdv libmpeg2 libtheora schroedinger libvpx x264 x265 xvidcore
+pacman -S --noconfirm --needed ffmpeg gstreamer gst-plugins-base gst-plugins-ugly gst-plugins-good gst-libav libavif libheif aom dav1d rav1e libde265 libdv libmpeg2 libtheora schroedinger libvpx x264 x265 xvidcore libquicktime
 
 
 #Hardware video acceleration:
