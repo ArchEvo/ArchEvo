@@ -33,6 +33,9 @@ source /opt/ArchEvo/modules/update/ntp/work.sh
 source /opt/ArchEvo/modules/update/pipewire/work.sh
 #source /opt/ArchEvo/modules/update/audio/work.sh
 
+# install graphic
+source /opt/ArchEvo/modules/update/graphic/work.sh
+
 # install and config gnome
 source /opt/ArchEvo/modules/update/gnome/before_check.sh
 source /opt/ArchEvo/modules/update/gnome/work.sh
