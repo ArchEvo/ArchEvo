@@ -19,3 +19,6 @@ pacman-key --init
 pacman-key --populate archlinux
 pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net
 
+
+#config
+sed -i 's/#Color/Color/' /etc/pacman.conf
