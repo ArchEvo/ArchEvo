@@ -104,3 +104,6 @@ source /opt/ArchEvo/modules/update/input/work.sh
 
 # config sysctl
 source /opt/ArchEvo/modules/update/sysctl/work.sh
+
+# config ide
+source /opt/ArchEvo/modules/update/ide/work.sh
