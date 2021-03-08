@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --noconfirm --needed gnome gnome-tweaks gdm archlinux-wallpaper libopenraw ffmpegthumbnailer tumbler android-udev dconf-editor xdg-desktop-portal xdg-desktop-portal-gtk
+pacman -S --noconfirm --needed gnome gnome-tweaks gdm archlinux-wallpaper gnome-backgrounds libopenraw ffmpegthumbnailer tumbler android-udev dconf-editor xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs
 
 #-->Service
 systemctl enable gdm
