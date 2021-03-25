@@ -27,7 +27,10 @@ source /opt/ArchEvo/modules/update/pacman/work.sh
 source /opt/ArchEvo/modules/update/reflector/work.sh
 
 # install and config ntp
-source /opt/ArchEvo/modules/update/ntp/work.sh
+#source /opt/ArchEvo/modules/update/ntp/work.sh
+
+# install and config ntp
+source /opt/ArchEvo/modules/update/systemd-timesyncd/work.sh
 
 # install audio
 source /opt/ArchEvo/modules/update/pipewire/work.sh
