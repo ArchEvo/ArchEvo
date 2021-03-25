@@ -28,3 +28,12 @@ su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.
 #functions
 su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.desktop.input-sources sources \"[('xkb', 'de')]\""
 su $INPUT_USER_NAME -c "dbus-launch --exit-with-session gsettings set org.gnome.software download-updates false"
+
+#disable tracker
+su $INPUT_USER_NAME -c "dbus-launch gsettings set org.freedesktop.Tracker.Miner.Files crawling-interval -2"
+su $INPUT_USER_NAME -c "dbus-launch gsettings set org.freedesktop.Tracker.Miner.Files enable-monitors false"
+su $INPUT_USER_NAME -c "dbus-launch gsettings set org.freedesktop.Tracker.Miner.Files index-on-battery false"
+su $INPUT_USER_NAME -c "dbus-launch gsettings set org.freedesktop.Tracker.Miner.Files index-on-battery-first-time false"
+
+#Nautilus
+su $INPUT_USER_NAME -c "gsettings set org.gnome.desktop.privacy remember-recent-files false"
