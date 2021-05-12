@@ -44,7 +44,7 @@ mkdir -p /mnt/boot/efi
 mount "/dev/$( echo $INPUT_INSTALL_DRIVE)1" /mnt/boot/efi
 
 # install init system
-pacstrap /mnt base $INPUT_LINUX_VERSION $( echo $INPUT_LINUX_VERSION)-headers linux-firmware grub btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim reflector
+pacstrap /mnt base $INPUT_LINUX_VERSION $( echo $INPUT_LINUX_VERSION)-headers linux-firmware grub grub-btrfs btrfs-progs efibootmgr lzop zstd cryptsetup git bash-completion vim reflector snapper
 
 # create fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -147,4 +147,15 @@ arch-chroot /mnt/ git clone https://github.com/ArchEvo/ArchEvo.git /opt/ArchEvo
 
 cp -r /opt/ArchEvoConf /mnt/opt/ArchEvoConf
 
+# add snapper config
+umount /mnt/.snapshots/
+rm -rf /mnt/.snapshots
+arch-chroot /mnt/ snapper --no-dbus -c root create-config /
+arch-chroot /mnt/ btrfs subvolume delete /.snapshots
+mkdir /mnt/.snapshots
+chmod 750 /mnt/.snapshots
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
+
+
 arch-chroot /mnt/ sync
+sleep 1
