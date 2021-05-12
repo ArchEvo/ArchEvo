@@ -11,7 +11,7 @@ sgdisk --new=2:0:0 --typecode=2:8300 --change-name=2:'cryptroot' "/dev/$INPUT_IN
 #create filesystem boot/efi
 mkfs.vfat -F 32 -n EFI "/dev/$( echo $INPUT_INSTALL_DRIVE)1"
 #create crypt luks
-echo -n "$INPUT_LUKS_PASSWORD" | cryptsetup -q --cipher aes-xts-plain64 --iter-time 3000 --key-size 512 --hash sha512 --use-random --type luks1 luksFormat "/dev/$( echo $INPUT_INSTALL_DRIVE)2" -
+echo -n "$INPUT_LUKS_PASSWORD" | cryptsetup -q --cipher aes-xts-plain64 --iter-time 5000 --key-size 512 --hash sha512 --use-random --type luks1 luksFormat "/dev/$( echo $INPUT_INSTALL_DRIVE)2" -
 
 #open crypt filesystem
 echo "$INPUT_LUKS_PASSWORD" |  cryptsetup luksOpen "/dev/$( echo $INPUT_INSTALL_DRIVE)2" cryptroot -
@@ -22,8 +22,11 @@ mkfs.btrfs /dev/mapper/cryptroot
 mount /dev/mapper/cryptroot /mnt
 
 #create subvol
-btrfs sub create /mnt/@root
+btrfs sub create /mnt/@
 btrfs sub create /mnt/@home
+btrfs sub create /mnt/@pkg
+btrfs sub create /mnt/@log
+btrfs sub create /mnt/@tmp
 btrfs sub create /mnt/@swap
 btrfs sub create /mnt/@snapshots
 
@@ -31,13 +34,21 @@ btrfs sub create /mnt/@snapshots
 umount /mnt
 
 #mount subvol
-mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=60,subvol=@root /dev/mapper/cryptroot /mnt
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@ /dev/mapper/cryptroot /mnt
 
-mkdir /mnt/{home,.snapshots,swap}
+mkdir /mnt/{home,.snapshots,swap,tmp}
+mkdir -p /mnt/var/cache/pacman/pkg/
+mkdir -p /mnt/var/log/
 
-mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=60,subvol=@home /dev/mapper/cryptroot /mnt/home/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@home /dev/mapper/cryptroot /mnt/home/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
+
+mount -o compress=zstd,space_cache=v2,ssd,noatime,subvol=@log /dev/mapper/cryptroot /mnt/var/log/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,subvol=@pkg /dev/mapper/cryptroot /mnt/var/cache/pacman/pkg/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,subvol=@tmp /dev/mapper/cryptroot /mnt/tmp/
+
 mount -o ssd,noatime,subvol=@swap /dev/mapper/cryptroot /mnt/swap/
-mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=60,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
+
 
 #mount efi
 mkdir -p /mnt/boot/efi
