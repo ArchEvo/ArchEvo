@@ -60,10 +60,6 @@ pacstrap /mnt base $INPUT_LINUX_VERSION $( echo $INPUT_LINUX_VERSION)-headers li
 # create fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# add ramdisk for tmp
-echo "tmpfs   /tmp            tmpfs   rw       0       0
-tmpfs   /var/tmp        tmpfs   rw      0        0" >> /mnt/etc/fstab
-
 # conig new system
 echo "KEYMAP=$INPUT_VCONSOLE_KEYMAP" > /mnt/etc/vconsole.conf
 echo "FONT=lat2-16" >> /mnt/etc/vconsole.conf
