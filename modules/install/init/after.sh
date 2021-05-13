@@ -9,7 +9,10 @@ fi
 umount /mnt/boot/efi
 umount /mnt/home
 umount /mnt/.snapshots
-umount /mnt/swap  
+umount /mnt/swap 
+umount /mnt/var/log/
+umount /mnt/var/cache/pacman/pkg/
+umount /mnt/tmp/
 umount /mnt        
 cryptsetup luksClose cryptroot
 
