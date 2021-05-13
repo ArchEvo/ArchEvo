@@ -143,7 +143,7 @@ if [ $INPUT_SWAP_SIZE != 0 ]; then
     arch-chroot /mnt/ chattr +C /swap/swapfile
     arch-chroot /mnt/ btrfs property set /swap/swapfile compression none
 
-    arch-chroot /mnt/ dd if=/dev/zero of=/swap/swapfile bs=1G count=$INPUT_SWAP_SIZE status=progress
+    arch-chroot /mnt/ fallocate -l $(echo $INPUT_SWAP_SIZE)G /swap/swapfile
     arch-chroot /mnt/ chmod 600 /swap/swapfile
     arch-chroot /mnt/ mkswap /swap/swapfile
     arch-chroot /mnt/ swapon /swap/swapfile
