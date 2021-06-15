@@ -17,8 +17,10 @@ rm -fr /etc/pacman.d/gnupg
 
 pacman-key --init
 pacman-key --populate archlinux
-pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net
+#pacman-key --refresh-keys --keyserver hkp://pool.sks-keyservers.net
 
 
 #config
 sed -i 's/#Color/Color/' /etc/pacman.conf
+sed -i 's/#CheckSpace/CheckSpace/' /etc/pacman.conf
+sed -i 's/#TotalDownload/TotalDownload/' /etc/pacman.conf
