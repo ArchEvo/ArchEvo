@@ -11,7 +11,7 @@ pacman -S --noconfirm --needed unrar unzip p7zip lhasa
 pacman -S --noconfirm --needed inetutils iputils bind-tools iotop sysstat whois tcpdump
 
 # prozess
-pacman -S --noconfirm --needed sysstat htop top
+pacman -S --noconfirm --needed sysstat htop procps-ng
 
 # scripting
 pacman -S --noconfirm --needed jq
