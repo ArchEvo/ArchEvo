@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --noconfirm --needed gnome gnome-tweaks gdm archlinux-wallpaper gnome-backgrounds libopenraw ffmpegthumbnailer tumbler android-udev dconf-editor xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs
+pacman -S --noconfirm --needed gnome gnome-tweaks gdm archlinux-wallpaper gnome-backgrounds libopenraw ffmpegthumbnailer tumbler android-udev dconf-editor xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-user-dirs
 
 #-->Service
 systemctl enable gdm
@@ -37,3 +37,6 @@ su $INPUT_USER_NAME -c "dbus-launch gsettings set org.freedesktop.Tracker.Miner.
 
 #Nautilus
 su $INPUT_USER_NAME -c "gsettings set org.gnome.desktop.privacy remember-recent-files false"
+
+#gedit
+su $INPUT_USER_NAME -c "gsettings set org.gnome.gedit.preferences.editor scheme 'Adwaita-dark'"
