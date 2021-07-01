@@ -8,3 +8,7 @@ ufw enable
 
 # enable helpers
 echo "options nf_conntrack nf_conntrack_helper=1" > /etc/modprobe.d/nf_conntrack.conf
+
+# set default policy
+ufw default deny incoming
+ufw default allow outgoing
