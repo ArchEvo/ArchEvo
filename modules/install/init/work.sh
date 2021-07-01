@@ -43,9 +43,9 @@ mkdir -p /mnt/var/log/
 mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@home /dev/mapper/cryptroot /mnt/home/
 mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots/
 
-mount -o compress=zstd,space_cache=v2,ssd,noatime,subvol=@log /dev/mapper/cryptroot /mnt/var/log/
-mount -o compress=zstd,space_cache=v2,ssd,noatime,subvol=@pkg /dev/mapper/cryptroot /mnt/var/cache/pacman/pkg/
-mount -o compress=zstd,space_cache=v2,ssd,noatime,subvol=@tmp /dev/mapper/cryptroot /mnt/tmp/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@log /dev/mapper/cryptroot /mnt/var/log/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@pkg /dev/mapper/cryptroot /mnt/var/cache/pacman/pkg/
+mount -o compress=zstd,space_cache=v2,ssd,noatime,discard=async,commit=120,subvol=@tmp /dev/mapper/cryptroot /mnt/tmp/
 
 mount -o ssd,noatime,subvol=@swap /dev/mapper/cryptroot /mnt/swap/
 
