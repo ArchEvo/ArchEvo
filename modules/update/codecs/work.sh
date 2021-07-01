@@ -19,7 +19,7 @@ fi
 
 #Intel
 if [ "$INPUT_GPU_DRIVER" == "intel" ]; then
-    pacman -S --noconfirm --needed libva-intel-driver intel-media-driver gstreamer-vaapi
+    pacman -S --noconfirm --needed libva-intel-driver intel-media-driver gstreamer-vaapi libvdpau-va-gl
 fi
 
 #NVIDIA (opensource)
